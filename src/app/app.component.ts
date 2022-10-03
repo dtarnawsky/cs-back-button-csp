@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private meta: Meta) {
+    this.meta.addTag({
+      'http-equiv': 'Content-Security-Policy',
+      content: environment.csp
+    });
+  }
 }
